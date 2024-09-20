@@ -6,6 +6,8 @@ from .forms import RegisterForm, ProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth import views as auth_views
+from .forms import EmailAuthenticationForm
 
 
 #index page
@@ -21,7 +23,9 @@ def register(request):
             user = form.save()
             print('asd')
 
-            login(request, user)
+            # login(request, user)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+
             return redirect('profile')  # Redirect to the home page after registration
         else:
             print(form.errors)
@@ -30,7 +34,7 @@ def register(request):
     return render(request, 'registration/register.html', {'form': form})
 
 
-@login_required
+@login_required(login_url='login_page')
 def profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
@@ -43,10 +47,15 @@ def profile(request):
 
 
 
-@login_required
+@login_required(login_url='login_page')
 def Gallery(request):
     
     context={
         
     }
     return render(request, 'gallery.html', context)
+
+
+
+class CustomLoginView(auth_views.LoginView):
+    form_class = EmailAuthenticationForm
