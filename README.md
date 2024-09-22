@@ -50,3 +50,8 @@ To access the admin panel, create a superuser:
     python manage.py createsuperuser
 
 You can then log in using either your email or username.
+
+
+
+**ありがとうございます 😊🎉✨
+**
