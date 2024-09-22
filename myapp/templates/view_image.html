@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+
+
+{% block content %}
+
+
+    <h1>Image View</h1>
+    
+    <div class="container-image" >
+        <div class="image-card">
+            <img src="{{ image.image.url }}" alt="{{ image.description|default:'Image' }}">
+            <p>{{ image.description }}</p> <!-- Assuming you have a description field -->
+        </div>
+    
+    </div>
+
+
+    <section class="images_view">
+        <div class="container">
+            {% for image in all %}
+                <figure class="{% if image.is_landscape %}landscape{% endif %}">
+                    <a href="{% url 'image_view' image.pk %}">
+                        <img src="{{ image.image.url }}" alt="{{ image.description }}">
+                    </a>
+                </figure>
+            {% endfor %}
+        </div>
+    </section>
+    
+
+{% endblock %}
+

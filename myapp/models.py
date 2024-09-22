@@ -23,3 +23,13 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
  #aswin123456@
  
  
+#  imagies model to save user give images 
+class Image(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='images/')
+    description = models.TextField(blank=True, null=True)
+    tags = models.CharField(max_length=255, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.description or 'Untitled'} by {self.user.username}"

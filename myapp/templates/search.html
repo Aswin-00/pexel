@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<section class="images_view ">
+    <div class="grid-container">
+      {% for image in images %}
+
+        <div class="grid-item">
+          <img src="{{ image.image.url}}" alt="{{ image.description }}">
+        </div>
+      {% endfor %}
+
+
+        
+        <!-- Add more images as grid-items -->
+      </div>
+</section>
+</div>
+<!-- Page-specific content will go here -->
+{% endblock %}
+

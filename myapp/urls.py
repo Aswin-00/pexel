@@ -6,6 +6,14 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('gallery/', views.Gallery, name='gallery'),
 
+# images url
+    path('images/', views.ImageListView.as_view(), name='image_list'),
+    path('images/upload/', views.ImageCreateView.as_view(), name='image_upload'),
+    path('images/<int:pk>/delete/', views.ImageDeleteView.as_view(), name='image_delete'),
+# search
+    path('search/', views.search, name='search'),
+#images view
+    path('image_view/<int:pk>/',views.Imageview, name='image_view'),
     
 
 ]
