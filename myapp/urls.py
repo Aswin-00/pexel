@@ -15,6 +15,9 @@ urlpatterns = [
 #images view
     path('image_view/<int:pk>/',views.Imageview, name='image_view'),
     
+# non login user
+    path('user_profile/<int:pk>/',views.profile_view, name='profile_view'),
+
 
 ]
 

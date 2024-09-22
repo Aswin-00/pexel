@@ -8,9 +8,18 @@
     <h1>Image View</h1>
     
     <div class="container-image" >
-        <div class="image-card">
-            <img src="{{ image.image.url }}" alt="{{ image.description|default:'Image' }}">
-            <p>{{ image.description }}</p> <!-- Assuming you have a description field -->
+        <div class="container">
+            <div class="container-image">
+                <img id="image_content" src="{{ image.image.url }}" alt="{{ image.description|default:'Image' }}">
+               </div>
+            <div class="container-detail">
+                <p>aurthor<a href="{% url 'profile_view' image.pk %}">{{image.user.username}}   </a></p>
+                <p id="dimensions"></p>
+
+                <p id="format">Image Format: </p>
+                <p class='image_description'>{{ image.description }}</p> <!-- Assuming you have a description field -->
+            </div>
+           
         </div>
     
     </div>
@@ -27,6 +36,49 @@
             {% endfor %}
         </div>
     </section>
+    
+    <script>
+        function getImageFormat() {
+            const img = document.getElementById('image_content').src;
+
+            fetch(img, { method: 'HEAD' })
+                .then(response => {
+                    const contentType = response.headers.get('Content-Type');
+                    document.getElementById('format').innerText = 'Image Format: ' + contentType;
+                })
+                .catch(error => {
+                    console.error('Error fetching the image:', error);
+                    document.getElementById('format').innerText = 'Error fetching image format.';
+                });
+        }
+        // Function to get the original dimensions of the image
+        function getImageDimensions() {
+            // Get the image element
+            var img = document.getElementById('image_content');
+            
+            // Check if the image has already been loaded
+            img.onload = function() {
+                // Get the original dimensions
+                var width = img.naturalWidth;
+                var height = img.naturalHeight;
+                console.log(width)
+                // Display the dimensions
+                document.getElementById('dimensions').innerText = 'Original Dimensions: ' + width + ' x ' + height + ' pixels';
+            };
+            
+            // If the image is already loaded (cached), trigger onload manually
+            if (img.complete) {
+                img.onload();
+            }
+        }
+    
+        // Call the function when the page is loaded
+        window.onload = function() {
+            getImageDimensions();
+            getImageFormat();
+        };
+
+    </script>
     
 
 {% endblock %}

@@ -95,9 +95,21 @@ def search(request):
 def Imageview(request,pk):
     image=ImageModel.objects.filter(pk=pk)
     print(image)
-    context={
+    context={  
         'image':image[0],
         'all':ImageModel.objects.exclude(pk=pk)
     }
     
     return render(request,'view_image.html',context)
+
+
+# user profile view for non login user 
+def profile_view(request,pk):
+    
+    context={
+        "image":ImageModel.objects.filter(pk=pk)[0],
+        "all":ImageModel.objects.filter(pk=pk)
+
+
+    }
+    return render(request,'non_login/profile.html',context)
