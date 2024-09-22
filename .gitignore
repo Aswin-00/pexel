@@ -1,0 +1,18 @@
+# Ignore Python virtual environment
+.venv/
+
+# Ignore migration files
+myapp/migrations/
+
+# Ignore __pycache__ files
+myapp/__pycache__/
+
+# Ignore the database file
+db.sqlite3
+
+# Ignore user-uploaded profile pictures
+profile_pics/
+
+images/
+profile_pics/
+logl.txt

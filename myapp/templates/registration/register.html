@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <img class="mx-auto h-10 w-auto" src="https://www.svgrepo.com/show/301692/login.svg" alt="Workflow">
+        <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+            Register for an account
+        </h2>
+    </div>
+
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            <form method="post">
+                {% csrf_token %}
+                <!-- Display non-field errors -->
+                {% if form.non_field_errors %}
+                    <div class="mb-4 text-red-500 text-sm">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                <!-- Username -->
+                <div class="mt-4">
+                    <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium leading-5 text-gray-700">
+                        {{ form.username.label_tag }}
+                    </label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        {{ form.username }}
+                        <!-- Display username errors -->
+                        {% if form.username.errors %}
+                            <div class="mt-1 text-red-500 text-sm">
+                                {{ form.username.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="mt-4">
+                    <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium leading-5 text-gray-700">
+                        {{ form.email.label_tag }}
+                    </label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        {{ form.email }}
+                        <!-- Display email errors -->
+                        {% if form.email.errors %}
+                            <div class="mt-1 text-red-500 text-sm">
+                                {{ form.email.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Password1 -->
+                <div class="mt-4">
+                    <label for="{{ form.password1.id_for_label }}" class="block text-sm font-medium leading-5 text-gray-700">
+                        {{ form.password1.label_tag }}
+                    </label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        {{ form.password1 }}
+                        <!-- Display password1 errors -->
+                        {% if form.password1.errors %}
+                            <div class="mt-1 text-red-500 text-sm">
+                                {{ form.password1.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Password2 -->
+                <div class="mt-4">
+                    <label for="{{ form.password2.id_for_label }}" class="block text-sm font-medium leading-5 text-gray-700">
+                        {{ form.password2.label_tag }}
+                    </label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        {{ form.password2 }}
+                        <!-- Display password2 errors -->
+                        {% if form.password2.errors %}
+                            <div class="mt-1 text-red-500 text-sm">
+                                {{ form.password2.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="mt-6">
+                    <button type="submit"
+                        class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+ {% comment %} @Admintest1234567 {% endcomment %}

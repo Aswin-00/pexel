@@ -1,0 +1,50 @@
+body {
+    background-color: #f5f5f5;  /* Light background for better contrast */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 400px;  /* Adjust container width as needed */
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control {
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    width: 100%;  /* Make button span full width */
+    background-color: #3498db;  /* Adjust button color */
+    border-color: #3498db; /* Match button color */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+p.mt-3 {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+a {
+    color: #3498db; /* Match button or other accent color */
+}
