@@ -1,0 +1,7 @@
+.venv
+images
+myapp/migrations/*
+myapp/__pycache__/*
+db.splite3
+profile_pics
+
