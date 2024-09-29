@@ -12,6 +12,7 @@ urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(), name='logout'),
     path('superman', admin.site.urls, name='superman'),
     path('login', views.CustomLoginView.as_view(), name='login_page'),
+    path('', include('django_prometheus.urls')),
 
     
 ]
@@ -19,3 +20,4 @@ urlpatterns = [
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
