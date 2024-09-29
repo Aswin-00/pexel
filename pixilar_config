@@ -1,0 +1,17 @@
+server {
+    listen 80;
+    listen [::]:80;
+    
+    server_name 0.0.0.0;  
+
+    location / {
+        include proxy_params;
+        proxy_pass http://0.0.0.0:8000;  # Localhost where Gunicorn is listening
+    }
+
+    
+
+    # Optional logging
+    error_log /var/log/nginx/my_django_project_error.log;
+    access_log /var/log/nginx/my_django_project_access.log;
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn daemon for pilixar project
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/PEXELS/
+ExecStart=/home/ubuntu/box_venv/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 pexels.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

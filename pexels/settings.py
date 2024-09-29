@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
+import time
 from pathlib import Path
+from datetime import datetime
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -72,16 +75,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pexels.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+## Postgres
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DATABASE_NAME'),
+        'USER': config('DATABASE_USER'),
+        'PASSWORD': config('DATABASE_PASSWORD'),
+        'HOST': config('DATABASE_HOST'),
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -139,13 +144,10 @@ AUTHENTICATION_BACKENDS = [
 
 
 #time 
-import time
-from datetime import datetime
 
 SERVER_START_TIME = datetime.now()  
 
 
-from decouple import config
 
 #aws
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')

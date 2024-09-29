@@ -7,3 +7,4 @@ python-decouple
 boto3
 django-storages 
 psycopg2-binary
+gunicorn
