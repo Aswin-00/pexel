@@ -12,18 +12,27 @@
             <div class="container-image">
                 <img id="image_content" src="{{ image.image.url }}" alt="{{ image.description|default:'Image' }}">
                </div>
-            <div class="container-detail">
-                <p>aurthor<a href="{% url 'profile_view' image.pk %}">{{image.user.username}}   </a></p>
+               <br>
+            <div class="container-detail" style="width:40rem;">
+                <p>aurthor:  <a href="{% url 'profile_view' image.pk %}">{{image.user.username}}   </a></p>
                 <p id="dimensions"></p>
 
-                <p id="format">Image Format: </p>
-                <p class='image_description'>{{ image.description }}</p> <!-- Assuming you have a description field -->
+                <p id="format">Image Format : </p>
+                <p class='image_description'>
+                    {% if image.description %}
+                    tag: <a href="{% url 'search_tag' image.description %}">{{ image.description }}</a>
+                    {%else%}
+                    about: not given
+                    {%endif%}
+
+                </p>
             </div>
            
         </div>
     
     </div>
-
+<br>
+<br>
 
     <section class="images_view">
         <div class="container">

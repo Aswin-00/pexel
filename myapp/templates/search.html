@@ -2,21 +2,19 @@
 
 {% block content %}
 
-<section class="images_view ">
-    <div class="grid-container">
+
+
+<section class="images_view">
+  <div class="container">
       {% for image in images %}
-
-        <div class="grid-item">
-          <img src="{{ image.image.url}}" alt="{{ image.description }}">
-        </div>
+          <figure class="{% if image.is_landscape %}landscape{% endif %}">
+              <a href="{% url 'image_view' image.pk %}">
+                  <img src="{{ image.image.url }}" alt="{{ image.description }}">
+              </a>
+          </figure>
       {% endfor %}
-
-
-        
-        <!-- Add more images as grid-items -->
-      </div>
+  </div>
 </section>
-</div>
-<!-- Page-specific content will go here -->
+
 {% endblock %}
 

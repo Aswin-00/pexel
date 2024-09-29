@@ -110,6 +110,43 @@ class="flex items-center justify-between flex-wrap bg-white py-4 lg:px-12 shadow
 </div>
 
 </nav>
+{% if user.is_staff %}
+<div style="display:flex; justify-content:center; gap:10px">
+
+    <div style="display: inline-block; padding: 10px; border: 2px solid black; font-size: 24px; font-weight: bold;">total number of  users: {{ usercount}}</div>
+<br>
+<div style="display: inline-block; padding: 10px; border: 2px solid black; font-size: 24px; font-weight: bold;">total no of  Photo uploded : {{imagecount}}</div>
+</div>
+
+<div style="display:flex; justify-content:center; gap:10px">
+    <script>
+        function loadUptime() {
+            fetch("{% url 'get_uptime' %}")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("uptime-div").innerHTML = 
+                    `Server Uptime: ${data.uptime_hours} hours, ${data.uptime_minutes} minutes, ${data.uptime_seconds} seconds`;
+            })        
+
+            .catch(error => console.error('Error fetching uptime:', error));
+        }
+
+        // Reload the div every 10 seconds
+        setInterval(loadUptime, 10000); // 10000ms = 10 seconds
+
+        // Initial load
+        window.onload = loadUptime;
+    </script>
+    <p id="uptime-div">Loading uptime...</p>
+
+</div>
+
+
+
+
+{% endif %}
+
+
 {% block content %}
   
 

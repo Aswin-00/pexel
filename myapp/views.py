@@ -10,15 +10,43 @@ from django.contrib.auth import views as auth_views
 from .forms import EmailAuthenticationForm
 from .models import Image as ImageModel
 from django.db.models import Q
+from django.conf import settings
+from django.http import JsonResponse
+from datetime import datetime
+
+
+
+
+def get_uptime_data(request):
+    current_time = datetime.now()
+    server_start_time = settings.SERVER_START_TIME
+    uptime_duration = current_time - server_start_time
+
+    uptime_seconds = uptime_duration.total_seconds()
+    uptime_hours, remainder = divmod(uptime_seconds, 3600)
+    uptime_minutes, uptime_seconds = divmod(remainder, 60)
+
+    return JsonResponse({
+        'uptime_hours': int(uptime_hours),
+        'uptime_minutes': int(uptime_minutes),
+        'uptime_seconds': int(uptime_seconds),
+    })
 
 
 #index page
 def index(request):
     
+        
     
     context={
         'images':ImageModel.objects.all().order_by('-created_at')
     }
+    if request.user.is_staff:
+        context.update({
+            "imagecount":ImageModel.objects.count(),
+            "usercount":User.objects.count()
+        })
+    
     return render(request, 'index.html',context)
 
 def register(request):
@@ -113,3 +141,22 @@ def profile_view(request,pk):
 
     }
     return render(request,'non_login/profile.html',context)
+
+# tag based search 
+def search_tag(request,tag):
+    query = tag  
+    print(query)
+    if query:
+        images = ImageModel.objects.filter(Q(tags__icontains=query) | Q(description__icontains=query))
+    else:
+        images = ImageModel.objects.none()  # Return empty queryset if no query
+    
+    
+    
+    # Prepare the context for rendering
+    context = {
+        'images': images
+    }
+    
+    return render(request, 'search.html', context)    
+

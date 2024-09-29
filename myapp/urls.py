@@ -12,11 +12,16 @@ urlpatterns = [
     path('images/<int:pk>/delete/', views.ImageDeleteView.as_view(), name='image_delete'),
 # search
     path('search/', views.search, name='search'),
+# serach tag
+    path("search/<str:tag>",views.search_tag,name='search_tag'),
 #images view
     path('image_view/<int:pk>/',views.Imageview, name='image_view'),
     
 # non login user
     path('user_profile/<int:pk>/',views.profile_view, name='profile_view'),
+# SERVER UP TIME 
+    path('get-uptime/', views.get_uptime_data, name='get_uptime'),
+
 
 
 ]
