@@ -53,7 +53,7 @@ jobs:
           echo "DATABASE_USER='${DATABASE_USER}'" >> env
           echo "DATABASE_HOST='${DATABASE_HOST}'" >> env
           echo "DATABASE_PASSWORD='${DATABASE_PASSWORD}'" >> env
-          echo "PAGE_ADMIN_PASSWORD='${PAGE_ADMIN_PASSWORD}'" >> env
+          echo "PAGE_ADMIN_USERNAME='${PAGE_ADMIN_USERNAME}'" >> env
           echo "PAGE_ADMIN_EMAIL='${PAGE_ADMIN_EMAIL}'" >> env
           echo "PAGE_ADMIN_PASSWORD='${PAGE_ADMIN_PASSWORD}'" >> env
 
