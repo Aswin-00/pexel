@@ -4,9 +4,9 @@ name: Deploy to EC2 🚀
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "new_main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "new_main" ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
