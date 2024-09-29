@@ -29,7 +29,7 @@ cp env .env
 
 
 
-# python3.11 manage.py add_product
+python3.11 manage.py run_default.py
 
 sudo systemctl stop gunicorn 
 
