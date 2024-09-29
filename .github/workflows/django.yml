@@ -60,7 +60,7 @@ jobs:
         run: |
           echo "copy file"
           ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_HOST "mkdir PEXELS"
-          scp -r * $EC2_USERNAME@$EC2_HOST:/home/ubuntu/
+          scp -r * $EC2_USERNAME@$EC2_HOST:/home/ubuntu/PEXELS/
 
       - name: Run Bash Script To Delpoy App 🚀
         env:
