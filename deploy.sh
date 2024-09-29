@@ -29,7 +29,7 @@ cp env .env
 
 
 
-python3.11 manage.py run_default.py
+python3.11 manage.py run_default
 
 sudo systemctl stop gunicorn 
 
