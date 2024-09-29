@@ -15,7 +15,7 @@ class Command(BaseCommand):
 
         
          # set all database 
-        call_command('collectstatic')
+        call_command('collectstatic', interactive=False)
         call_command('makemigrations')
         call_command('migrate')
         
