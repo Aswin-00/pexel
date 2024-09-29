@@ -59,6 +59,7 @@ jobs:
           EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
         run: |
           echo "copy file"
+          ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_HOST "mkdir PEXELS"
           scp -r * $EC2_USERNAME@$EC2_HOST:/home/ubuntu/
 
       - name: Run Bash Script To Delpoy App 🚀
