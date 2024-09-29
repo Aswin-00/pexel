@@ -9,7 +9,7 @@ class Command(BaseCommand):
     
 
     def handle(self, *args, **kwargs):
-        username =config('PAGE_ADMIN_USRENAME')
+        username =config('PAGE_ADMIN_USERNAME')
         email = config('PAGE_ADMIN_EMAIL')
         password = config('PAGE_ADMIN_PASSWORD')
 

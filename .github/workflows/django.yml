@@ -35,7 +35,7 @@ jobs:
           DATABASE_USER: ${{ secrets.DATABASE_USER }}
           DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          PAGE_ADMIN_USERNAME: ${{ secrets.PAGE_ADMIN_USRENAME }}
+          PAGE_ADMIN_USERNAME: ${{ secrets.PAGE_ADMIN_USERNAME }}
           PAGE_ADMIN_EMAIL: ${{ secrets.PAGE_ADMIN_EMAIL }}
           PAGE_ADMIN_PASSWORD: ${{ secrets.PAGE_ADMIN_PASSWORD }}
 
