@@ -3,12 +3,19 @@ server {
     listen [::]:80;
     
     server_name 16.171.29.136;  
+    client_max_body_size 20M; 
+
+
 
     location / {
         include proxy_params;
         proxy_pass http://0.0.0.0:8000;  # Localhost where Gunicorn is listening
     }
-
+    
+    location /metrics {
+        allow 51.20.185.211;  # Allow access from this IP
+        deny all;  # Deny access to all other IPs    
+    }
     
 
     # Optional logging
