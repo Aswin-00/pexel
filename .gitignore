@@ -17,3 +17,4 @@ images/
 profile_pics/
 logl.txt
 static/
+.env
