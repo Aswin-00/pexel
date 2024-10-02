@@ -13,7 +13,7 @@ server {
     }
     
     location /metrics {
-        allow 16.171.3.166;  # Allow access from this IP
+        allow 16.171.3.166:9090;  # Allow access from this IP
         deny all;  # Deny access to all other IPs    
     }
     
