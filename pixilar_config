@@ -2,7 +2,7 @@ server {
     listen 80;
     listen [::]:80;
     
-    server_name 16.171.29.136;  
+    server_name 16.171.169.199;  
     client_max_body_size 20M; 
 
 
@@ -13,7 +13,7 @@ server {
     }
     
     location /metrics {
-        allow 51.20.185.211;  # Allow access from this IP
+        allow 16.171.3.166;  # Allow access from this IP
         deny all;  # Deny access to all other IPs    
     }
     
@@ -22,3 +22,4 @@ server {
     error_log /var/log/nginx/my_django_project_error.log;
     access_log /var/log/nginx/my_django_project_access.log;
 }
+

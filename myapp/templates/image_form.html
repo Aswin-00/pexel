@@ -2,10 +2,26 @@
 
 {% block content %}
   <h2>Upload New Image</h2>
-  <form method="post" enctype="multipart/form-data">
+  <form method="post" enctype="multipart/form-data" style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ccc; border-radius: 10px;">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-  </form>
+    
+      <p style="margin-bottom: 15px;">
+          <label for="id_image" style="display: block; font-weight: bold; margin-bottom: 5px;">Image:</label>
+          <input type="file" name="image" accept="image/*" required id="id_image" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+      </p>
+  
+      <p style="margin-bottom: 15px;">
+          <label for="id_description" style="display: block; font-weight: bold; margin-bottom: 5px;">Description:</label>
+          <textarea name="description" cols="40" rows="10" id="id_description" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+      </p>
+  
+      <p style="margin-bottom: 15px;">
+          <label for="id_tags" style="display: block; font-weight: bold; margin-bottom: 5px;">Tags:</label>
+          <input type="text" name="tags" maxlength="255" id="id_tags" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+      </p>
+  
+  
+      <button type="submit" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">Upload</button>
+    </form>
   <a href="{% url 'image_list' %}">Back to Gallery</a>
 {% endblock %}
