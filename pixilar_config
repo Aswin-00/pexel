@@ -12,10 +12,6 @@ server {
         proxy_pass http://0.0.0.0:8000;  # Localhost where Gunicorn is listening
     }
     
-    location /metrics {
-        allow 16.171.3.166:9090;  # Allow access from this IP
-        deny all;  # Deny access to all other IPs    
-    }
     
 
     # Optional logging
