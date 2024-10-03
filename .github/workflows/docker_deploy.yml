@@ -1,25 +1,26 @@
-name: Build deocker images
+name: Build and Push Docker Images
+
 on:
   push:
     branches: [ "devops" ]
-    
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout the current branch
       - name: Checkout current branch ✅
         uses: actions/checkout@v2
 
-      
+      # Step 2: Log in to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-
-
-      -name : push to docker 
+      # Step 3: Build and push the Docker image
+      - name: Build and Push Docker Image
         run: |
-          docker build --no-cache -t ${{ secrets.DOCKERHUB_USERNAME }}/manasu .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
+          docker build --no-cache -t ${{ secrets.DOCKERHUB_USERNAME }}/manasu:latest .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/manasu:latest
