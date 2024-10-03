@@ -3,3 +3,7 @@
 .gitignore
 log.txt
 .env
+gunicorn.service
+pixilar_config
+todo.txt
+deploy.sh
