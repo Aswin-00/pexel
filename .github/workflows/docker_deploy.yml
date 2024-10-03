@@ -22,5 +22,5 @@ jobs:
       # Step 3: Build and push the Docker image
       - name: Build and Push Docker Image
         run: |
-          docker build --no-cache -t ${{ secrets.DOCKERHUB_USERNAME }}/manasu:latest .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/manasu:latest
+          docker build --no-cache -t ${{ secrets.DOCKERHUB_USERNAME }}/pexel .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/pexel:latest
