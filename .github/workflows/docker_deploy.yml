@@ -16,7 +16,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-        
+
+
+
+      -name : push to docker 
         run: |
           docker build --no-cache -t ${{ secrets.DOCKERHUB_USERNAME }}/manasu .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
