@@ -2,7 +2,7 @@ server {
     listen 80;
     listen [::]:80;
     
-    server_name 16.171.169.199;  
+    server_name 16.170.236.58;  
     client_max_body_size 20M; 
 
 
